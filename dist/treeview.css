@@ -1,0 +1,37 @@
+.treeview-node {
+  list-style-type: none;
+}
+
+.treeview__sign--collapsed {
+  cursor: zoom-in;
+}
+
+.treeview__sign--expanded {
+  cursor: zoom-out;
+}
+
+span.treeview__sign--collapsed::before {
+  content: "[+]\a";
+}
+
+span.treeview__sign--expanded::before {
+  content: "[-]\a";
+}
+
+.treeview-node .hidden {
+  display: none;
+}
+
+.treeview-node .selected {
+  font-weight: bold !important;
+}
+
+.treeview-node .selected:hover {
+  text-decoration: none !important;
+  cursor: text !important;
+}
+
+.treeview-node .leaf:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}

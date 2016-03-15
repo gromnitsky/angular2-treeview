@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Example1</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="../dist/treeview.css">
+    <style type="text/css">
+      #examples {
+	display: flex;
+	justify-content: space-around;
+      }
+      #example1 {
+	border: 1px solid blue;
+	padding: 1em;
+      }
+      #example2 {
+	border: 1px solid black;
+	padding: 1em;
+      }
+    </style>
+
+  </head>
+
+  <body>
+
+    <div id="examples">
+      <example1>Loading 1...</example1>
+      <example2>Loading 2...</example2>
+    </div>
+
+    <script src="../node_modules/babel-polyfill/dist/polyfill.js"></script>
+
+    <!-- order is important -->
+    <script src="../node_modules/angular2/bundles/angular2-polyfills.js"></script>
+    <script src="../node_modules/rxjs/bundles/Rx.umd.js"></script>
+    <script src="../node_modules/angular2/bundles/angular2-all.umd.js"></script>
+
+    <script src="example1.browserify.js"></script>
+
+  </body>
+</html>
