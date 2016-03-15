@@ -3,11 +3,11 @@
 }
 
 .treeview__sign--collapsed {
-  cursor: zoom-in;
+  cursor: pointer;
 }
 
 .treeview__sign--expanded {
-  cursor: zoom-out;
+  cursor: pointer;
 }
 
 span.treeview__sign--collapsed::before {

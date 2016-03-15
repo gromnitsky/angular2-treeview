@@ -1,7 +1,7 @@
-/* globals ng, Rx */
+/* globals ng, treeview */
 'use strict';
 
-let tw = require('../treeview')
+let tw = treeview
 
 let Example1 = ng.core.Component({
     selector: 'example1',

@@ -20,33 +20,31 @@ test: node_modules
 	$(mocha) -u tdd $(TEST_OPT) $(src)/test/test_*.js
 
 
+# produce UMD
 js.src := $(wildcard *.js)
-js.dest := $(patsubst %.js, dist/%.js, $(js.src))
+es5.dest := $(patsubst %.js, %.es5, $(js.src))
+umd.dest := $(patsubst %.es5, dist/%.umd.js, $(es5.dest))
 
-babel := node_modules/.bin/babel
-dist/%.js: %.js
-	$(babel) --presets es2015 $(BABEL_OPT) $< -o $@
+%.es5: %.js
+	node_modules/.bin/babel --presets es2015 $(BABEL_OPT) $< -o $@
 
-$(js.dest): node_modules
-compile: $(js.dest)
+dist/%.umd.js: %.es5
+	node_modules/.bin/browserify -s $(notdir $(basename $<)) $< -o $@
+
+$(umd.dest): node_modules
+compile: $(umd.dest)
+
+# minify
+umd.min.dest := $(patsubst %.umd.js, %.umd.min.js, $(umd.dest))
+
+UGLIFYJS_OPT := --screw-ie8 -m -c unused=false
+%.min.js: %.js
+	node_modules/.bin/uglifyjs $(UGLIFYJS_OPT) -o $@ -- $<
+
+compile: $(umd.min.dest)
 
 
 dist/treeview.css: treeview.css
 	cp $< $@
 
 compile: dist/treeview.css
-
-
-bundles.src := $(filter-out %.browserify.js, $(wildcard test/example*.js))
-es5.dest := $(patsubst %.js, %.es5, $(bundles.src))
-bundles.dest := $(patsubst %.es5, %.browserify.js, $(es5.dest))
-
-%.es5: %.js
-	$(babel) --presets es2015 $(BABEL_OPT) $< -o $@
-
-browserify := node_modules/.bin/browserify
-%.browserify.js: %.es5
-	$(browserify) $(BROWSERIFY_OPT) $< -o $@
-
-$(bundles.dest): node_modules $(js.src)
-compile: $(bundles.dest)
