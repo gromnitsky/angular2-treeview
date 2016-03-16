@@ -97,7 +97,13 @@ let Example2 = ng.core.Component({
 })
 
 
-document.addEventListener('DOMContentLoaded', function() {
+let boot = function() {
     ng.platform.browser.bootstrap(Example1)
     ng.platform.browser.bootstrap(Example2, [ng.http.HTTP_PROVIDERS])
-})
+}
+
+if (document.readyState === "loading") {
+    document.addEventListener('DOMContentLoaded', boot)
+} else {
+    boot()
+}
