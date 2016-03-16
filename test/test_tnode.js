@@ -13,7 +13,7 @@ let posts2cal = function(data) {
     return root
 }
 
-// mock
+// a mock that ran amok
 global.ng = {
     core: {
 	forwardRef: function() {},

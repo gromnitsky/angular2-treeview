@@ -37,7 +37,7 @@ compile: $(umd.dest)
 # minify
 umd.min.dest := $(patsubst %.umd.js, %.umd.min.js, $(umd.dest))
 
-UGLIFYJS_OPT := --screw-ie8 -m -c unused=false
+UGLIFYJS_OPT := --screw-ie8 -m -c
 %.min.js: %.js
 	node_modules/.bin/uglifyjs $(UGLIFYJS_OPT) -o $@ -- $<
 
