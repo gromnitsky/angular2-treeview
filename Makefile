@@ -48,3 +48,11 @@ dist/treeview.css: treeview.css
 	cp $< $@
 
 compile: dist/treeview.css
+
+
+tmp.e1 := tmp/angular2-treeview
+upload:
+	wget -nv -P $(tmp.e1) -k -nd -p http://localhost/~alex/lib/software/alex/angular2-treeview/test/example1.html
+	rsync -avPL --delete -e ssh $(tmp.e1) \
+		gromnitsky@web.sourceforge.net:/home/user-web/gromnitsky/htdocs/js/examples/
+	rm -rf tmp

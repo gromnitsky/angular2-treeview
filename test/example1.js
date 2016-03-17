@@ -73,7 +73,7 @@ let Example2 = ng.core.Component({
 	console.log('Example2')
 	this.self = this
 
-	http.get('data/blog.json').map(res => res.json()).
+	http.get('blog.json').map(res => res.json()).
 	    subscribe(json => {
 		let root = new tw.TNode("root")
 		json.posts.forEach( post => {
