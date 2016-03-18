@@ -1,13 +1,12 @@
-.treeview-node {
+/* <ul> */
+.treeview__node {
   list-style-type: none;
 }
 
-.treeview__sign--collapsed {
+/* an indicator to the left of a node printed name */
+.treeview__sign {
   cursor: pointer;
-}
-
-.treeview__sign--expanded {
-  cursor: pointer;
+  font-family: monospace;
 }
 
 span.treeview__sign--collapsed::before {
@@ -18,20 +17,26 @@ span.treeview__sign--expanded::before {
   content: "[-]\a";
 }
 
-.treeview-node .hidden {
+.treeview__node--hidden {
   display: none;
 }
 
-.treeview-node .selected {
+.treeview__node--selected {
   font-weight: bold !important;
 }
 
-.treeview-node .selected:hover {
+.treeview__node--selected:hover {
   text-decoration: none !important;
   cursor: text !important;
 }
 
-.treeview-node .leaf:hover {
+/* <span> a printed node name */
+.treeview__node__display {
+  /* background-color: yellow; */
+}
+
+/* a node w/o childred */
+.treeview__node--leaf:hover {
   text-decoration: underline;
   cursor: pointer;
 }

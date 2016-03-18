@@ -146,16 +146,18 @@ let TreeView = ng.core.Component({
     inputs: ['parent', 'src', 'selected', 'node_click', 'node_print'],
     directives: [ng.core.forwardRef(function() { return TreeView })],
     template:`
-<ul class="treeview-node"
-    [class.hidden]="src?.parent && !selected?.ascendant_of(src)">
+<ul class="treeview__node"
+    [class.treeview__node--hidden]="src?.parent && !selected?.ascendant_of(src)">
   <li *ngFor="#tnode of src?.kids">
     <span *ngIf="tnode.kids.length"
-	  (click)="toggle_view($event)" class="{{ sign(tnode) }}">
+	  (click)="toggle_view($event)"
+	  class="treeview__sign {{ sign(tnode) }}">
     </span>
 
     <span (click)="node_click ? node_click($event, tnode) : stub_node_click($event, tnode)"
-	  [class.selected]="match(tnode, selected)"
-	  [class.leaf]="tnode.kids.length == 0">
+	  class="treeview__node__display"
+	  [class.treeview__node--selected]="match(tnode, selected)"
+	  [class.treeview__node--leaf]="tnode.kids.length == 0">
       {{ node_print ? node_print(tnode) : tnode.name }}
     </span>
 
@@ -183,11 +185,10 @@ let TreeView = ng.core.Component({
     },
 
     toggle_view: function(e) {
-	window.q = e.target
 	e.target.classList.toggle('treeview__sign--expanded')
 	e.target.classList.toggle('treeview__sign--collapsed')
 	e.target.nextElementSibling.nextElementSibling.children[0]
-	    .classList.toggle('hidden') // next <treeview>
+	    .classList.toggle('treeview__node--hidden') // next <treeview>
     }
 
 })

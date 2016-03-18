@@ -185,7 +185,7 @@ var TreeView = ng.core.Component({
 			directives: [ng.core.forwardRef(function () {
 						return TreeView;
 			})],
-			template: "\n<ul class=\"treeview-node\"\n    [class.hidden]=\"src?.parent && !selected?.ascendant_of(src)\">\n  <li *ngFor=\"#tnode of src?.kids\">\n    <span *ngIf=\"tnode.kids.length\"\n\t  (click)=\"toggle_view($event)\" class=\"{{ sign(tnode) }}\">\n    </span>\n\n    <span (click)=\"node_click ? node_click($event, tnode) : stub_node_click($event, tnode)\"\n\t  [class.selected]=\"match(tnode, selected)\"\n\t  [class.leaf]=\"tnode.kids.length == 0\">\n      {{ node_print ? node_print(tnode) : tnode.name }}\n    </span>\n\n    <treeview [parent]=\"parent\" [src]=\"tnode\" [node_click]=\"node_click\"\n\t      [node_print]=\"node_print\" [selected]=\"selected\"></treeview>\n  </li>\n</ul>\n"
+			template: "\n<ul class=\"treeview__node\"\n    [class.treeview__node--hidden]=\"src?.parent && !selected?.ascendant_of(src)\">\n  <li *ngFor=\"#tnode of src?.kids\">\n    <span *ngIf=\"tnode.kids.length\"\n\t  (click)=\"toggle_view($event)\"\n\t  class=\"treeview__sign {{ sign(tnode) }}\">\n    </span>\n\n    <span (click)=\"node_click ? node_click($event, tnode) : stub_node_click($event, tnode)\"\n\t  class=\"treeview__node__display\"\n\t  [class.treeview__node--selected]=\"match(tnode, selected)\"\n\t  [class.treeview__node--leaf]=\"tnode.kids.length == 0\">\n      {{ node_print ? node_print(tnode) : tnode.name }}\n    </span>\n\n    <treeview [parent]=\"parent\" [src]=\"tnode\" [node_click]=\"node_click\"\n\t      [node_print]=\"node_print\" [selected]=\"selected\"></treeview>\n  </li>\n</ul>\n"
 }).Class({
 			constructor: function constructor() {},
 
@@ -204,10 +204,9 @@ var TreeView = ng.core.Component({
 			},
 
 			toggle_view: function toggle_view(e) {
-						window.q = e.target;
 						e.target.classList.toggle('treeview__sign--expanded');
 						e.target.classList.toggle('treeview__sign--collapsed');
-						e.target.nextElementSibling.nextElementSibling.children[0].classList.toggle('hidden'); // next <treeview>
+						e.target.nextElementSibling.nextElementSibling.children[0].classList.toggle('treeview__node--hidden'); // next <treeview>
 			}
 
 });
