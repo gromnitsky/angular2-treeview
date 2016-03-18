@@ -18,9 +18,9 @@ branch is auto-expanded. `usr` subtree is auto-collapsed because it
 doesn't contain a selected node.
 
 A live example:
-[http://gromnitsky.users.sourceforge.net/js/examples/angular2-treeview/example1.html]()
-(SourceForge is ridiculously slow, it can take 2 minutes to load
-all Angular2 deps.)
+[test/example1.html](http://gromnitsky.users.sourceforge.net/js/examples/angular2-treeview/example1.html)
+(SourceForge is ridiculously slow, it can take 2 minutes to load all
+Angular2 deps.)
 
 ## Styling
 
