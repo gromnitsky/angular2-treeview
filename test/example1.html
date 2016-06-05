@@ -35,11 +35,18 @@
     <!-- an old babel that was removed :( -->
     <script src="vendor/babel-browser-5.8.35.min.js"></script>
 
-    <!-- order is important -->
-    <script src="../node_modules/angular2/bundles/angular2-polyfills.min.js"></script>
-    <script src="../node_modules/rxjs/bundles/Rx.umd.min.js"></script>
-    <script src="../node_modules/angular2/bundles/angular2-all.umd.js"></script>
+    <!-- angular -->
+    <script src="../node_modules/zone.js/dist/zone.js"></script>
+    <script src="../node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="../node_modules/rxjs/bundles/Rx.umd.js"></script>
+    <script src="../node_modules/@angular/core/core.umd.js"></script>
+    <script src="../node_modules/@angular/common/common.umd.js"></script>
+    <script src="../node_modules/@angular/compiler/compiler.umd.js"></script>
+    <script src="../node_modules/@angular/platform-browser/platform-browser.umd.js"></script>
+    <script src="../node_modules/@angular/platform-browser-dynamic/platform-browser-dynamic.umd.js"></script>
+    <script src="../node_modules/@angular/http/http.umd.js"></script>
 
+    <!-- our code -->
     <script src="../dist/treeview.umd.min.js"></script>
     <script type="text/babel" src="example1.js"></script>
 

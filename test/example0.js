@@ -34,7 +34,7 @@ window.some_staff = function() {
     window.etc.kid_add(window.passwd)
 }
 
-let boot = () => ng.platform.browser.bootstrap(Example)
+let boot = () => ng.platformBrowserDynamic.bootstrap(Example)
 
 if (document.readyState === "loading")
     document.addEventListener('DOMContentLoaded', boot)
