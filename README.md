@@ -19,7 +19,7 @@ doesn't contain a selected node.
 
 A live example:
 [test/example1.html](http://gromnitsky.users.sourceforge.net/js/examples/angular2-treeview/example1.html)
-(SourceForge is ridiculously slow, it can take 2 minutes to load all
+(SourceForge can be ridiculously slow & it can take 2 minutes to load all
 Angular2 deps.)
 
 ## Styling
@@ -29,7 +29,7 @@ almost no styling. `[+]` & `[-]` indicators are spans.
 
 ## Installation
 
-As I'm writing this, Angular2 is in beta9; it contains numerous
+As I'm writing this, Angular2 is in ~~beta9~~ rc1; it contains numerous
 bugs. angular2-treeview ships w/ 2 UMD modules. Depending on the phase
 of the moon one of them may work fine while the other will crash the
 Chrome tab.
@@ -108,7 +108,7 @@ contains a pointer to its instance.
 
 Angular2 should update the screen but it doesn't. To force it, type:
 
-	> ng.probe($('example')).injector._depProvider.componentView.changeDetector.detectChanges()
+	> ng.probe($('example'))._debugInfo._view.changeDetectorRef.detectChanges()
 
 (You don't need to do this in your code, obviously.)
 
@@ -131,7 +131,7 @@ Attach the tree:
 
 Update the screen:
 
-	> ng.probe($('example')).injector._depProvider.componentView.changeDetector.detectChanges()
+	> ng.probe($('example'))._debugInfo._view.changeDetectorRef.detectChanges()
 
 The tree has expanded automatically for the widget had a knowledge of
 a "selected" node.
