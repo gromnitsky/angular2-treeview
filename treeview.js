@@ -148,7 +148,7 @@ let TreeView = ng.core.Component({
     template:`
 <ul class="treeview__node"
     [class.treeview__node--hidden]="src?.parent && !selected?.ascendant_of(src)">
-  <li *ngFor="#tnode of src?.kids">
+  <li *ngFor="let tnode of src?.kids">
     <span *ngIf="tnode.kids.length"
 	  (click)="toggle_view($event)"
 	  class="treeview__sign {{ sign(tnode) }}">
