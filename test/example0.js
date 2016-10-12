@@ -22,6 +22,15 @@ let Example = ng.core.Component({
     },
 })
 
+let ExampleModule = ng.core.NgModule({
+    imports: [ng.platformBrowser.BrowserModule],
+    declarations: [ Example, treeview.TreeView ],
+    bootstrap: [ Example ],
+}).Class({
+    constructor: function() {}
+})
+
+
 // see README
 window.some_staff = function() {
     window.tree = new treeview.TNode('my files')
@@ -34,7 +43,10 @@ window.some_staff = function() {
     window.etc.kid_add(window.passwd)
 }
 
-let boot = () => ng.platformBrowserDynamic.bootstrap(Example)
+let boot = function() {
+    ng.platformBrowserDynamic.platformBrowserDynamic()
+	.bootstrapModule(ExampleModule)
+}
 
 if (document.readyState === "loading")
     document.addEventListener('DOMContentLoaded', boot)

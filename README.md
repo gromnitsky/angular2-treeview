@@ -29,10 +29,10 @@ almost no styling. `[+]` & `[-]` indicators are spans.
 
 ## Installation
 
-As I'm writing this, Angular2 is in ~~beta9~~ rc2; it contains numerous
+~~As I'm writing this, Angular2 is in beta9; it contains numerous
 bugs. angular2-treeview ships w/ 2 UMD modules. Depending on the phase
 of the moon one of them may work fine while the other will crash the
-Chrome tab.
+Chrome tab.~~
 
 Clone the repo. The widget consists of 2 files: `treeview.css` &
 `treeview.js`.

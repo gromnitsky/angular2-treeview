@@ -51,6 +51,15 @@ let Example1 = ng.core.Component({
     }
 })
 
+let Example1Module = ng.core.NgModule({
+    imports: [ng.platformBrowser.BrowserModule],
+    declarations: [ Example1, tw.TreeView ],
+    bootstrap: [ Example1 ],
+}).Class({
+    constructor: function() {}
+})
+
+
 let Example2 = ng.core.Component({
     selector: 'example2',
     directives: [tw.TreeView],
@@ -96,10 +105,20 @@ let Example2 = ng.core.Component({
     },
 })
 
+let Example2Module = ng.core.NgModule({
+    imports: [ng.platformBrowser.BrowserModule, ng.http.HttpModule],
+    declarations: [ Example2, tw.TreeView ],
+    bootstrap: [ Example2 ],
+}).Class({
+    constructor: function() {}
+})
+
 
 let boot = function() {
-    ng.platformBrowserDynamic.bootstrap(Example1)
-    ng.platformBrowserDynamic.bootstrap(Example2, [ng.http.HTTP_PROVIDERS])
+    ng.platformBrowserDynamic.platformBrowserDynamic()
+	.bootstrapModule(Example1Module)
+    ng.platformBrowserDynamic.platformBrowserDynamic()
+	.bootstrapModule(Example2Module)
 }
 
 if (document.readyState === "loading") {
